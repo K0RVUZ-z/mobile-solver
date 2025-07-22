@@ -5,13 +5,14 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Mobile Solver – Portfólio</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Segoe UI', sans-serif; color:#333; background:#fdfdfd; }
+  body { font-family:'Segoe UI', sans-serif; color:#333; background:#fdfdfd; scroll-behavior: smooth; }
   .hero {
-    height:100vh; background:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') center/cover no-repeat;
+    height:100vh; background:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=compress&fm=webp&w=1600') center/cover no-repeat;
     display:flex; align-items:center; justify-content:center;
-    position:relative;
+    position:relative; animation: fadeIn 2s ease;
   }
   .hero::after {
     content:''; position:absolute; inset:0;
@@ -19,6 +20,7 @@
   }
   .hero-content {
     position:relative; text-align:center; color:#fff;
+    animation: slideDown 1.5s ease;
   }
   .hero-content h1 { font-size:3rem; margin-bottom:0.5rem; }
   .hero-content p { font-size:1.5rem; }
@@ -46,11 +48,16 @@
     grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
     gap:1rem;
   }
+  .gallery a {
+    transition: transform 0.3s;
+  }
+  .gallery a:hover {
+    transform: scale(1.03);
+  }
   .gallery img {
     width:100%; height:auto; display:block;
-    border-radius:8px; transition:transform 0.3s;
+    border-radius:8px;
   }
-  .gallery img:hover { transform:scale(1.03); }
   .materials {
     display:flex; flex-wrap:wrap; gap:1.5rem; justify-content:center;
   }
@@ -58,6 +65,10 @@
     width:220px; border-radius:10px; overflow:hidden;
     box-shadow:0 4px 12px rgba(0,0,0,0.1);
     text-align:center; background:#fff;
+    transition:transform 0.3s;
+  }
+  .card:hover {
+    transform: translateY(-5px);
   }
   .card img { width:100%; height:140px; object-fit:cover; }
   .card p { padding:0.75rem; font-size:0.95rem; font-weight:500; }
@@ -71,9 +82,31 @@
     transition:background 0.3s;
   }
   .contato a:hover { background:#1a242f; }
+  .btn-quote {
+    position:fixed; bottom:20px; right:20px;
+    background:#27ae60; color:#fff; padding:1rem 1.5rem;
+    border-radius:30px; font-weight:bold; text-decoration:none;
+    box-shadow:0 4px 12px rgba(0,0,0,0.2);
+    z-index:200;
+    transition:transform 0.3s, background 0.3s;
+  }
+  .btn-quote:hover {
+    background:#219150;
+    transform:scale(1.05);
+  }
   footer {
     text-align:center; padding:2rem 1rem;
     background:#2c3e50; color:#fff; margin-top:4rem;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
   }
 </style>
 </head>
@@ -95,41 +128,35 @@
 <section id="projetos">
   <h2>Projetos em Destaque</h2>
   <div class="gallery">
-    <img src="https://images.unsplash.com/photo-1600585152933-2091cf3b6d8c" alt="Sala moderna MDF">
-    <img src="https://images.unsplash.com/photo-1588854337114-1e626c6d3af8" alt="Cozinha planejada elegante">
-    <img src="https://images.unsplash.com/photo-1598300057873-1b7be2f56f5e" alt="Quarto sob medida sofisticado">
+    <a href="https://images.unsplash.com/photo-1600585152933-2091cf3b6d8c?auto=compress&fm=webp&w=1600" data-lightbox="projetos"><img src="https://images.unsplash.com/photo-1600585152933-2091cf3b6d8c?auto=compress&fm=webp&w=600" alt="Sala moderna MDF"></a>
+    <a href="https://images.unsplash.com/photo-1588854337114-1e626c6d3af8?auto=compress&fm=webp&w=1600" data-lightbox="projetos"><img src="https://images.unsplash.com/photo-1588854337114-1e626c6d3af8?auto=compress&fm=webp&w=600" alt="Cozinha planejada elegante"></a>
+    <a href="https://images.unsplash.com/photo-1598300057873-1b7be2f56f5e?auto=compress&fm=webp&w=1600" data-lightbox="projetos"><img src="https://images.unsplash.com/photo-1598300057873-1b7be2f56f5e?auto=compress&fm=webp&w=600" alt="Quarto sob medida sofisticado"></a>
   </div>
 </section>
 
 <section id="materiais">
   <h2>Catálogo de Materiais</h2>
   <div class="materials">
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1618220049784-d9c1b41f64f4" alt="Branco Fosco">
-      <p>MDF Branco Fosco</p>
-    </div>
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1574180045827-681f8a1a9622" alt="MDF Amadeirado">
-      <p>MDF Nogueira Amadeirado</p>
-    </div>
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1621510690071-e71dc6fc6468" alt="Canaletado">
-      <p>MDF Canaletado Natural</p>
-    </div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1618220049784-d9c1b41f64f4?auto=compress&fm=webp&w=400" alt="Branco Fosco"><p>Branco Fosco</p></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1574180045827-681f8a1a9622?auto=compress&fm=webp&w=400" alt="Nogueira Amadeirado"><p>Nogueira Amadeirado</p></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1621510690071-e71dc6fc6468?auto=compress&fm=webp&w=400" alt="Canaletado Natural"><p>Canaletado Natural</p></div>
   </div>
 </section>
 
 <section id="contato">
   <h2>Entre em Contato</h2>
   <div class="contato">
-    <a href="https://wa.me/SEUNUMERO" target="_blank">📱 WhatsApp</a>
-    <a href="https://instagram.com/SEUUSUARIO" target="_blank">📸 Instagram</a>
+    <a href="https://wa.me/12988325341" target="_blank">📱 WhatsApp</a>
+    <a href="https://instagram.com/geanlima.l" target="_blank">📸 Instagram</a>
   </div>
 </section>
+
+<a href="https://wa.me/12988325341" class="btn-quote" target="_blank">💬 Orçamento Rápido</a>
 
 <footer>
   <p>&copy; 2025 Mobile Solver. Todos os direitos reservados.</p>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox-plus-jquery.min.js"></script>
 </body>
 </html>
